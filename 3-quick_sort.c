@@ -1,46 +1,68 @@
 #include "sort.h"
-
-void quick_sort_recursive(int *array, int low, int high, size_t size)
+#include <stdio.h>
+/**
+ * partition - calculate the new partition array
+ * @array: array of integers
+ * @lo: lower value for start
+ * @hi: highter value for end
+ * @size: array element size
+ * Return: int index pivot
+ */
+int partition(int *array, int lo, int hi, size_t size)
 {
-    int partition_index;
+    int pivot = array[hi];
+    int i = lo;
+    int j;
+    int tmp;
+    int tmp2;
 
-    if (low < high)
+    for (j = lo; j < hi; j++)
     {
-        partition_index = partition(array, low, high, size);
-
-        quick_sort_recursive(array, low, partition_index - 1, size);
-        quick_sort_recursive(array, partition_index + 1, high, size);
-    }
-}
-
-int partition(int *array, int low, int high, size_t size)
-{
-    int pivot = array[high];
-    int i = (low - 1), j;
-
-    for (j = low; j <= high - 1; j++)
-    {
-        if (array[j] <= pivot)
+        if (array[j] < pivot)
         {
+            if (array[i] != array[j])
+            {
+                tmp = array[i];
+                array[i] = array[j];
+                array[j] = tmp;
+                print_array(array, size);
+            }
             i++;
-            swap_array(array, i, j);
         }
     }
-    swap_array(array, i + 1, high);
-    /*printf("low [%li]\nhigh [%li]\ni [%li]\nj [%li]\n", low, high, i, j);*/
-    print_array(array, size);
-    return (i + 1);
+    if (array[i] != array[hi])
+    {
+        tmp2 = array[i];
+        array[i] = array[hi];
+        array[hi] = tmp2;
+        print_array(array, size);
+    }
+    return (i);
 }
-
-void swap_array(int *array, int idx1, int idx2)
+/**
+ * sort - making recursion for quick sort
+ * @array: array of integers
+ * @lo: start
+ * @hi: end
+ * @size: array element size
+ */
+void sort(int *array, int lo, int hi, size_t size)
 {
-    int temp = array[idx1];
+    int p;
 
-    array[idx1] = array[idx2];
-    array[idx2] = temp;
+    if (lo < hi)
+    {
+        p = partition(array, lo, hi, size);
+        sort(array, lo, p - 1, size);
+        sort(array, p + 1, hi, size);
+    }
 }
-
+/**
+ * quick_sort - implement quick_sort algorithm
+ * @array: array of integers
+ * @size: array element size
+ */
 void quick_sort(int *array, size_t size)
 {
-    quick_sort_recursive(array, 0, (int)size - 1, size);
+    sort(array, 0, (int)size - 1, size);
 }
