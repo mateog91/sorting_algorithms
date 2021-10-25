@@ -31,6 +31,13 @@ void shell_sort(int *array, size_t size)
 
 	size_t i, j, gap, n;
 
+	if (array == NULL)
+		return;
+	if (size < 2)
+	{
+		print_array(array, size);
+		return;
+	}
 	n = size / 3;
 	while (1)
 	{
