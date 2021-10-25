@@ -39,6 +39,8 @@ void shell_sort(int *array, size_t size)
 		return;
 	}
 	n = size / 3;
+	if (size < 6)
+		n = 2;
 	while (1)
 	{
 		n--;
