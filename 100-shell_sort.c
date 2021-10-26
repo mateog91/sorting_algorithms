@@ -34,10 +34,7 @@ void shell_sort(int *array, size_t size)
 	if (array == NULL)
 		return;
 	if (size < 2)
-	{
-		print_array(array, size);
 		return;
-	}
 	n = size / 3;
 	if (size < 6)
 		n = 2;
