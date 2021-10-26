@@ -14,7 +14,7 @@ void cocktail_sort_list(listint_t **list)
 
 	if (list == NULL || *list == NULL)
 		return;
-	size = length(list);
+	size = _length(list);
 	end = size - 1;
 	current = *list;
 	do {
@@ -88,11 +88,11 @@ void swap_left(listint_t **list, listint_t *node)
  *
  * Return: size of the list
  */
-unsigned int length(**list)
+size_t _length(listint_t **list)
 {
-	unsigned int size = 1;
+	size_t size = 1;
+	listint_t *current = *list;
 
-	current = *list;
 	while (current->next != NULL)
 	{
 		current = current->next;
