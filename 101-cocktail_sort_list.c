@@ -15,6 +15,8 @@ void cocktail_sort_list(listint_t **list)
 	if (list == NULL || *list == NULL)
 		return;
 	size = _length(list);
+	if (size < 2)
+		return;
 	end = size - 1;
 	current = *list;
 	do {
@@ -83,7 +85,7 @@ void swap_left(listint_t **list, listint_t *node)
 }
 
 /**
- * length - finds lenght of list
+ * _length - finds lenght of list
  * @list: Input list
  *
  * Return: size of the list
