@@ -35,9 +35,15 @@ void insertion_sort_list(listint_t **list)
 	}
 }
 
+/**
+ * swap - swaps numbers
+ *
+ * @list: list of the items
+ * @c_inner: pointer to the node to swap.
+ *
+ */
 void swap(listint_t **list, listint_t *c_inner)
 {
-
 	/* Remover el siguiente de la lista y guardar en temporal de origen */
 	/*current = current->prev;*/
 
