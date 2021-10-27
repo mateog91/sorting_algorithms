@@ -12,7 +12,7 @@ void insertion_sort_list(listint_t **list)
 {
 	listint_t *c_outer = *list;
 	/* Edge case for lists with 0 or 1 element*/
-	if (*list == NULL || c_outer->next == NULL)
+	if (list == NULL || *list == NULL || c_outer->next == NULL)
 		return;
 	/* Recorrer hasta el final de la lista */
 	while (c_outer->next != NULL)
