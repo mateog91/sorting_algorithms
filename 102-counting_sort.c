@@ -19,13 +19,13 @@
 
 void counting_sort(int *array, size_t size)
 {
-	int *count, *b, k;
-	size_t i;
+	int *count, *b;
+	size_t i, k;
 
 	k = array[0];
 	for (i = 1; i < size - 1; i++)
 	{
-		if (array[i] > k)
+		if (array[i] > (int)k)
 			k = array[i];
 	}
 
@@ -42,11 +42,15 @@ void counting_sort(int *array, size_t size)
 		count[i] = count[i] + count[i - 1];
 	print_array(count, k + 1);
 
-	for (i = size - 1; i >= 0; i--)
+	for (i = size - 1; 1; i--)
+	{
 		b[--count[array[i]]] = array[i];
+		if (i == 0)
+			break;
+	}
 
-	for (i = 0; i < size; i == 0)
-		array[i = b[i]];
+	for (i = 0; i < size; i++)
+		array[i] = b[i];
 
 	print_array(array, size);
 

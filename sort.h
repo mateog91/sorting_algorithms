@@ -39,5 +39,5 @@ size_t _length(listint_t **list);
 void swap_left(listint_t **list, listint_t *node);
 void cocktail_sort_list(listint_t **list);
 /* 102-counting_sort.c file*/
-void cocktail_sort_list(listint_t **list);
+void counting_sort(int *array, size_t size);
 #endif /* sort.h */
